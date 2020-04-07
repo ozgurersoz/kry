@@ -12,12 +12,5 @@ extension LocationService {
         struct Request {
             let locationId: String
         }
-        
-        struct SuccessResponse: Decodable {
-            let status: Bool
-        }
-        enum ErrorResponse: Error {
-            case genericError(_ message: String)
-        }
     }
 }
