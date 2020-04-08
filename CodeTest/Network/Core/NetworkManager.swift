@@ -15,7 +15,7 @@ class NetworkManager {
         self.urlSession = urlSession
     }
     
-    func loadData<ResponseModel: Decodable>(_ urlRequest: URLRequest,
+    func request<ResponseModel: Decodable>(_ urlRequest: URLRequest,
                                            responseObject: ResponseModel.Type,
                                            completion: @escaping (Result<ResponseModel, NetworkError>) -> Void) {
         urlSession.dataTask(with: urlRequest) { [weak self] (result) in
@@ -45,7 +45,7 @@ class NetworkManager {
          }.resume()
     }
     
-    func removeData(_ urlRequest: URLRequest,
+    func requestWithoutResponseData(_ urlRequest: URLRequest,
                   completion: @escaping (Result<Bool, NetworkError>) -> Void) {
         urlSession.dataTaskWithoutData(with: urlRequest) { (result) in
            switch result {

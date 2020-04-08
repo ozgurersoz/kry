@@ -36,7 +36,7 @@ class LocationServiceTests: XCTestCase {
         let manager = NetworkManager(urlSession: session)
         
         let urlRequest = URLRequest(url: URL(string: "http://mockapi.kry.io")!)
-        manager.removeData(urlRequest) { (result) in
+        manager.requestWithoutResponseData(urlRequest) { (result) in
             if case let Result.success(value) = result {
                 XCTAssertEqual(value, true)
             } else {
@@ -59,7 +59,7 @@ class LocationServiceTests: XCTestCase {
         let manager = NetworkManager(urlSession: session)
         
         let urlRequest = URLRequest(url: URL(string: "http://mockapi.kry.io")!)
-        manager.loadData(
+        manager.request(
             urlRequest,
             responseObject: ResponseModel.self
         ) { (result) in

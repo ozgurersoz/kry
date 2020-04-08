@@ -29,7 +29,7 @@ class LocationService: LocationServiceLogic {
             return handler(.failure(.genericError("URLRequest is wrong")))
         }
         
-        manager.loadData(urlRequest, responseObject: LocationService.FetchLocations.SuccessResponse.self) { [weak self] (result) in
+        manager.request(urlRequest, responseObject: LocationService.FetchLocations.SuccessResponse.self) { [weak self] (result) in
             guard let self: LocationService = self else { return }
             switch result {
             case .success(let response):
@@ -53,7 +53,7 @@ class LocationService: LocationServiceLogic {
             return
         }
         
-        manager.removeData(urlRequest) { _ in }
+        manager.requestWithoutResponseData(urlRequest) { _ in }
     }
 }
 
