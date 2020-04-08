@@ -29,6 +29,11 @@
 		DF43E76E243D1056000C8103 /* URLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43E76C243D1056000C8103 /* URLSessionDataTaskMock.swift */; };
 		DF43E771243D108C000C8103 /* LocationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43E770243D108C000C8103 /* LocationServiceTests.swift */; };
 		DF43E773243D13FF000C8103 /* RemoveLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43E772243D13FF000C8103 /* RemoveLocation.swift */; };
+		DF43E775243DCF2A000C8103 /* AddNewLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43E774243DCF2A000C8103 /* AddNewLocation.swift */; };
+		DF43E777243DD165000C8103 /* AddNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43E776243DD165000C8103 /* AddNewLocationViewController.swift */; };
+		DF43E77D243DD2E4000C8103 /* AddNewLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF43E77C243DD2E4000C8103 /* AddNewLocationController.swift */; };
+		DFA11AC9243DD7120039F1D2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA11AC8243DD7120039F1D2 /* Storyboard.swift */; };
+		DFA11ACB243DDC4B0039F1D2 /* AddNewLocationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA11ACA243DDC4B0039F1D2 /* AddNewLocationControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +73,11 @@
 		DF43E76C243D1056000C8103 /* URLSessionDataTaskMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		DF43E770243D108C000C8103 /* LocationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceTests.swift; sourceTree = "<group>"; };
 		DF43E772243D13FF000C8103 /* RemoveLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveLocation.swift; sourceTree = "<group>"; };
+		DF43E774243DCF2A000C8103 /* AddNewLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocation.swift; sourceTree = "<group>"; };
+		DF43E776243DD165000C8103 /* AddNewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocationViewController.swift; sourceTree = "<group>"; };
+		DF43E77C243DD2E4000C8103 /* AddNewLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocationController.swift; sourceTree = "<group>"; };
+		DFA11AC8243DD7120039F1D2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		DFA11ACA243DDC4B0039F1D2 /* AddNewLocationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocationControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,17 +119,16 @@
 		1C61DFBD226497D60042B6CE /* CodeTest */ = {
 			isa = PBXGroup;
 			children = (
+				DF43E77B243DD198000C8103 /* Models */,
+				DF43E778243DD170000C8103 /* Scenes */,
 				DF43E753243D02AB000C8103 /* Network */,
 				1C61DFBE226497D60042B6CE /* AppDelegate.swift */,
-				1C61E0162265C4DC0042B6CE /* WeatherLocation.swift */,
-				1C61DFDE2264990E0042B6CE /* WeatherController.swift */,
-				1C61E0142265C4630042B6CE /* WeatherViewController.swift */,
-				1C61DFE02264A20B0042B6CE /* LocationTableViewCell.swift */,
 				DF43E768243D0721000C8103 /* SessionManager.swift */,
 				1C61DFCA226497D70042B6CE /* Info.plist */,
 				1C61DFC2226497D60042B6CE /* Main.storyboard */,
 				1C61DFC7226497D70042B6CE /* LaunchScreen.storyboard */,
 				1C61DFC5226497D70042B6CE /* Assets.xcassets */,
+				DFA11AC8243DD7120039F1D2 /* Storyboard.swift */,
 			);
 			path = CodeTest;
 			sourceTree = "<group>";
@@ -130,6 +139,7 @@
 				DF43E76A243D1056000C8103 /* Network */,
 				1C61DFD3226497D70042B6CE /* WeatherControllerTests.swift */,
 				1C61DFD5226497D70042B6CE /* Info.plist */,
+				DFA11ACA243DDC4B0039F1D2 /* AddNewLocationControllerTests.swift */,
 			);
 			path = CodeTestTests;
 			sourceTree = "<group>";
@@ -170,6 +180,7 @@
 				DF43E762243D02E5000C8103 /* LocationService.swift */,
 				DF43E764243D0343000C8103 /* FetchLocations.swift */,
 				DF43E772243D13FF000C8103 /* RemoveLocation.swift */,
+				DF43E774243DCF2A000C8103 /* AddNewLocation.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -190,6 +201,42 @@
 				DF43E770243D108C000C8103 /* LocationServiceTests.swift */,
 			);
 			path = LocationServiceTests;
+			sourceTree = "<group>";
+		};
+		DF43E778243DD170000C8103 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DF43E77A243DD182000C8103 /* AddNewLocation */,
+				DF43E779243DD17C000C8103 /* Locations */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DF43E779243DD17C000C8103 /* Locations */ = {
+			isa = PBXGroup;
+			children = (
+				1C61DFDE2264990E0042B6CE /* WeatherController.swift */,
+				1C61E0142265C4630042B6CE /* WeatherViewController.swift */,
+				1C61DFE02264A20B0042B6CE /* LocationTableViewCell.swift */,
+			);
+			path = Locations;
+			sourceTree = "<group>";
+		};
+		DF43E77A243DD182000C8103 /* AddNewLocation */ = {
+			isa = PBXGroup;
+			children = (
+				DF43E776243DD165000C8103 /* AddNewLocationViewController.swift */,
+				DF43E77C243DD2E4000C8103 /* AddNewLocationController.swift */,
+			);
+			path = AddNewLocation;
+			sourceTree = "<group>";
+		};
+		DF43E77B243DD198000C8103 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1C61E0162265C4DC0042B6CE /* WeatherLocation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,12 +345,16 @@
 				1C61DFE12264A20B0042B6CE /* LocationTableViewCell.swift in Sources */,
 				DF43E75C243D02BF000C8103 /* URLSession+DataTask.swift in Sources */,
 				DF43E75D243D02BF000C8103 /* NetworkManager.swift in Sources */,
+				DF43E77D243DD2E4000C8103 /* AddNewLocationController.swift in Sources */,
 				DF43E75E243D02BF000C8103 /* HTTPMethod.swift in Sources */,
 				DF43E769243D0721000C8103 /* SessionManager.swift in Sources */,
 				DF43E765243D0343000C8103 /* FetchLocations.swift in Sources */,
 				1C61DFDF2264990E0042B6CE /* WeatherController.swift in Sources */,
+				DFA11AC9243DD7120039F1D2 /* Storyboard.swift in Sources */,
 				DF43E763243D02E5000C8103 /* LocationService.swift in Sources */,
 				1C61DFBF226497D60042B6CE /* AppDelegate.swift in Sources */,
+				DF43E775243DCF2A000C8103 /* AddNewLocation.swift in Sources */,
+				DF43E777243DD165000C8103 /* AddNewLocationViewController.swift in Sources */,
 				DF43E760243D02BF000C8103 /* HTTPStatusCode.swift in Sources */,
 				1C61E0172265C4DD0042B6CE /* WeatherLocation.swift in Sources */,
 				DF43E773243D13FF000C8103 /* RemoveLocation.swift in Sources */,
@@ -319,6 +370,7 @@
 				1C61DFD4226497D70042B6CE /* WeatherControllerTests.swift in Sources */,
 				DF43E771243D108C000C8103 /* LocationServiceTests.swift in Sources */,
 				DF43E76E243D1056000C8103 /* URLSessionDataTaskMock.swift in Sources */,
+				DFA11ACB243DDC4B0039F1D2 /* AddNewLocationControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

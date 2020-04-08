@@ -12,7 +12,7 @@ extension URLRequest {
     static func prepareForRequest(to path: String,
                                   method: HTTPMethod,
                                   headers: [String: String] = [:],
-                                  body: [String: Any]? = nil,
+                                  body: Data? = nil,
                                   queryItems: [URLQueryItem] = []) throws -> URLRequest {
         guard let url = self.setUrl(path, queryItems: queryItems) else {
              throw NetworkError.invalidEndpoint
@@ -24,12 +24,7 @@ extension URLRequest {
         })
         
         if let body = body {
-            do {
-                let data = try JSONSerialization.data(withJSONObject: body, options: [])
-                request.httpBody = data
-            } catch {
-                throw NetworkError.invalidEndpoint
-            }
+            request.httpBody = body
         }
         
         return request

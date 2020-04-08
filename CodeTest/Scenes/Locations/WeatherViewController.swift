@@ -9,16 +9,15 @@ class WeatherViewController: UITableViewController {
     private var controller: WeatherController!
 
     static func create(controller: WeatherController) -> WeatherViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let viewController = storyboard.instantiateInitialViewController() as! WeatherViewController
-
+        let viewController = Storyboard.Main.view(controllerClass: WeatherViewController.self)
         viewController.controller = controller
         return viewController
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(navigateToAddNewLocation))
+
         controller.bind(view: self)
         setup()
     }
@@ -27,6 +26,14 @@ class WeatherViewController: UITableViewController {
         title = "Weather Code Test"
         tableView.tableFooterView = UIView()
         tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+    }
+    
+    @objc
+    private func navigateToAddNewLocation() {
+        let controller = AddNewLocationController(locationService: LocationService())
+        controller.delegate = self
+        let viewController = AddNewLocationViewController.create(controller: controller)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -65,5 +72,12 @@ extension WeatherViewController {
             controller.removeLocation(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+}
+
+
+extension WeatherViewController: AddNewLocationControllerDelegate {
+    func reloadData() {
+        controller.refresh()
     }
 }

@@ -12,11 +12,37 @@ protocol LocationServiceLogic {
     func fetchLocations(_ request: LocationService.FetchLocations.Request,
                         then handler: @escaping (Result<LocationService.FetchLocations.SuccessResponse, LocationService.FetchLocations.ErrorResponse>) -> Void)
     func removeLocation(_ request: LocationService.RemoveLocation.Request)
+    
+    func addNewLocation(_ request: LocationService.AddNewLocation.Request,
+                        then handler: @escaping (Result<LocationService.AddNewLocation.SuccessResponse, LocationService.AddNewLocation.ErrorResponse>) -> Void)
 }
 
 
 class LocationService: LocationServiceLogic {
     var manager = NetworkManager(urlSession: URLSession(configuration: .default))
+    
+    func addNewLocation(_ request: AddNewLocation.Request, then handler: @escaping (Result<AddNewLocation.SuccessResponse, AddNewLocation.ErrorResponse>) -> Void) {
+        
+        let body = try! JSONEncoder().encode(request)
+                
+        guard let urlRequest = try? URLRequest.prepareForRequest(
+            to: "/locations",
+            method: .post,
+            headers: ["X-Api-Key": SessionManager.apiKey],
+            body: body
+        ) else {
+            return handler(.failure(.genericError("URLRequest is wrong")))
+        }
+        
+        manager.request(urlRequest, responseObject: AddNewLocation.SuccessResponse.self) { (result) in
+            switch result {
+            case .success(let response):
+                handler(.success(response))
+            case .failure(let error):
+                handler(.failure(.genericError(error.message)))
+            }
+        }
+    }
     
     func fetchLocations(_ request: FetchLocations.Request,
                         then handler: @escaping (Result<FetchLocations.SuccessResponse, FetchLocations.ErrorResponse>) -> Void) {

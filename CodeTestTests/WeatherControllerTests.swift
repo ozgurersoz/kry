@@ -24,23 +24,7 @@ class WeatherControllerTests: XCTestCase {
 }
 
 extension WeatherControllerTests {
-    class MockLocationService: LocationServiceLogic {
-        func fetchLocations(_ request: LocationService.FetchLocations.Request, then handler: @escaping (Result<LocationService.FetchLocations.SuccessResponse, LocationService.FetchLocations.ErrorResponse>) -> Void) {
-            let response = LocationService.FetchLocations.SuccessResponse(
-                locations: [
-                    LocationService.FetchLocations.SuccessResponse.WeatherLocation(
-                        id: "1",
-                        name: "Stockholm",
-                        status: LocationService.FetchLocations.SuccessResponse.WeatherLocation.Status(rawValue: "SUNNY")!,
-                        temperature: 25
-                    )
-                ]
-            )
-            handler(.success(response))
-        }
-        
-        func removeLocation(_ request: LocationService.RemoveLocation.Request) {}
-    }
+    
     
     class SpyWeatherViewController: WeatherView {
         var showEntriesCalled = false
@@ -54,4 +38,33 @@ extension WeatherControllerTests {
             displayErrorCalled = true
         }
     }
+}
+
+
+class MockLocationService: LocationServiceLogic {
+    func addNewLocation(_ request: LocationService.AddNewLocation.Request, then handler: @escaping (Result<LocationService.AddNewLocation.SuccessResponse, LocationService.AddNewLocation.ErrorResponse>) -> Void) {
+        let location = LocationService.AddNewLocation.SuccessResponse(
+            id: "1",
+            name: "Stockholm",
+            status: LocationService.AddNewLocation.SuccessResponse.Status(rawValue: "SUNNY")!,
+            temperature: 25
+        )
+        handler(.success(location))
+    }
+    
+    func fetchLocations(_ request: LocationService.FetchLocations.Request, then handler: @escaping (Result<LocationService.FetchLocations.SuccessResponse, LocationService.FetchLocations.ErrorResponse>) -> Void) {
+        let response = LocationService.FetchLocations.SuccessResponse(
+            locations: [
+                LocationService.FetchLocations.SuccessResponse.WeatherLocation(
+                    id: "1",
+                    name: "Stockholm",
+                    status: LocationService.FetchLocations.SuccessResponse.WeatherLocation.Status(rawValue: "SUNNY")!,
+                    temperature: 25
+                )
+            ]
+        )
+        handler(.success(response))
+    }
+    
+    func removeLocation(_ request: LocationService.RemoveLocation.Request) {}
 }

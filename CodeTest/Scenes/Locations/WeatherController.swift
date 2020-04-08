@@ -59,6 +59,7 @@ extension WeatherController {
     }
 }
 
+
 private extension WeatherController {
     func prepareLocationStatus(from status: LocationService.FetchLocations.SuccessResponse.WeatherLocation.Status) -> WeatherLocation.Status {
         let emoji = prepareEmoji(from: status)
